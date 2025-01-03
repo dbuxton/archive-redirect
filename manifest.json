@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Archive.is Redirector",
+  "version": "1.0", 
+  "description": "Redirects specific domain requests to archive.is",
+
+  "permissions": [
+    "webRequest",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://archive.is/*",
+        "https://archive.md/*",
+        "https://archive.ph/*",
+        "https://archive.today/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+
+  "options_page": "options.html"
+}
